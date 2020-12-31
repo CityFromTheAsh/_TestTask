@@ -1,0 +1,17 @@
+<div *ngIf='(images$ | async); let images' >
+    <div class="wrapper">
+        <div *ngFor='let picture of images.pictures' class="item" (click)="navigateTo(picture.id)">
+            <img [src]="picture.cropped_picture">
+        </div>
+    </div>
+    <div class="wrapper">
+        <div *ngIf='images.page'>page: {{images.page}}</div>
+        <div *ngIf='images.pageCount'>/{{images.pageCount}}</div>
+        <button *ngIf='images.page' mat-icon-button disabled (click)="nav(+images.page - 1)">
+            <mat-icon>keyboard_arrow_left</mat-icon>
+        </button>
+        <button *ngIf='images.page' mat-icon-button disabled (click)="nav(+images.page + 1)">
+            <mat-icon>keyboard_arrow_right</mat-icon>
+        </button>
+    </div>
+</div>

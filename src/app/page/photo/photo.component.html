@@ -1,0 +1,23 @@
+<div *ngIf='imageData$ | async; let imageData' [style.zoom]='zoom'>
+    <div class="container" (click)="openFullSize(imageData.full_picture)">
+        <img [src]="imageData.cropped_picture">
+        <div class="left-center">{{imageData.tags}}</div>
+        <div class="top-right">{{imageData.camera}}</div>
+        <div class="bottom-right">{{imageData.author}}</div>
+    </div>
+</div>
+<div class="nav">
+    <button mat-icon-button (click)="nav(-1)">
+        <mat-icon>keyboard_arrow_left</mat-icon>
+    </button>
+    <button mat-icon-button (click)="nav(1)">
+        <mat-icon>keyboard_arrow_right</mat-icon>
+    </button>
+
+    <button mat-icon-button (click)="changeZoom(1)">
+        <mat-icon>add</mat-icon>
+    </button>
+    <button mat-icon-button (click)="changeZoom(-1)">
+        <mat-icon>remove</mat-icon>
+    </button>
+</div>
